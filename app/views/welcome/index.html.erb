@@ -6,5 +6,12 @@
   <div class='action-buttons'>
     <%= link_to "Create a New Contact", new_contact_path, class: 'btn btn-success btn-large' %>
     <%= link_to "See All Contacts", contacts_path, class: 'btn btn-primary btn-large' %>
+    <% if user_signed_in? %>
+                <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Sign up", new_user_registration_path %></li>
+                <li><%= link_to "Sign in", new_user_session_path %></li>
+              <% end %>
+     <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
   </div>
 </section>

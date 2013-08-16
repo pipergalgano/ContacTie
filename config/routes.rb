@@ -1,5 +1,5 @@
 Contacttie::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "welcome#index"
   resources :contacts
   get 'tags/:tag', to: 'contacts#index', as: :tag
