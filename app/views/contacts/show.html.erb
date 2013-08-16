@@ -1,0 +1,12 @@
+<i class="icon-chevron-left"> </i><button class="btn" type="button"><%= link_to "Back to All Contacts", contacts_path(@contact) %></button><br>
+<br>
+<p><strong>Name:</strong> <%= @contact.name %></p>
+<p><strong>E-mail:</strong> <%= @contact.email %></p>
+<p><strong>Phone Number:</strong> <%= @contact.phone_number %></p>
+<p><strong>Notes:</strong> <%= @contact.notes %></p>
+<i class="icon-tags"> </i>Tags: <%= raw @contact.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %> </p>
+
+
+	<button class="btn" type="button"><%= link_to "Edit", edit_contact_path(@contact) %></button>
+
+<button class="btn btn-danger" type="button"><%= link_to 'Delete Contact', contact_path(@contact), method: "DELETE", confirm: "Are you sure you want to delete this contact?" %></button>

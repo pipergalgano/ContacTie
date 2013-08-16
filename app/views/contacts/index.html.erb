@@ -1,0 +1,21 @@
+<h1>My Contacts</h1>
+
+<% if flash[:notice] %>
+  <div class="notice"><%=flash[:notice]%></div>
+<% end %>
+
+<%= render :partial => 'search' %>
+
+
+<button class="btn" type="button"><%= link_to "Add New Contact", new_contact_path(@contact) %></button>
+</br><br>
+
+<%= render :partial => 'list' %>
+
+<%= content_for(:sidebar) do %>
+  <section class="well">
+    <ul class="nav nav-list">
+      <li class="nav-header">Tags</li>
+      <li><%= link_to contacts_path(@contact) %></li>
+  </ul>
+<% end %>

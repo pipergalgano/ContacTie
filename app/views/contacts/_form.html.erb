@@ -1,0 +1,25 @@
+<%= form_for @contact do |f| %>
+  <fieldset>
+    <div class="fields">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="fields">
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div class="fields">
+      <%= f.label :phone_number %>
+      <%= f.text_field :phone_number %>
+    </div>
+    <div class="fields">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </div>
+    <div class="field">
+      <%= f.label :tag_list, "Tags (separated by commas)" %><br />
+      <%= f.text_field :tag_list %>
+      </div>
+  </fieldset>
+  <%= f.submit %>
+<% end %>
