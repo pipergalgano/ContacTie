@@ -46,6 +46,8 @@ gem 'twitter-bootstrap-rails'
 gem 'acts-as-taggable-on'
 
 gem "omniauth-google-oauth2"
+
+gem 'google-api-client', :require => 'google/api_client'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
