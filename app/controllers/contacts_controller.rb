@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
 
    def create
     safe_contact = params.require(:contact).permit(:name, :email, :phone_number, :notes, :tag, :tags, :tag_list)
-    @contact = current_user.contact.new safe_contact
+    @contact = Contact.new safe_contact
 
     if @contact.save
       redirect_to @contact
