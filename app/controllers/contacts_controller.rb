@@ -1,5 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :load_contact, :only => [:edit, :update, :show, :destroy]
   
   def index
   	if params[:tag]
@@ -10,7 +11,6 @@ class ContactsController < ApplicationController
   end
 
   def show
-    @contact = Contact.find(params[:id])
   end
 
   def new
@@ -18,12 +18,11 @@ class ContactsController < ApplicationController
   end
 
   def edit
-    @contact = Contact.find(params[:id])
   end
 
    def create
     safe_contact = params.require(:contact).permit(:name, :email, :phone_number, :notes, :tag, :tags, :tag_list)
-    @contact = Contact.new safe_contact
+    @contact = current_user.contact.new safe_contact
 
     if @contact.save
       redirect_to @contact
@@ -34,7 +33,6 @@ class ContactsController < ApplicationController
 
   def update
   	safe_contact = params.require(:contact).permit(:name, :email, :phone_number, :notes, :tag, :tags, :tag_list)
-    @contact = Contact.find(params[:id])
 
     if @contact.update(safe_contact)
       redirect_to @contact

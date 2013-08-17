@@ -1,11 +1,10 @@
 <div><address>
-  <% @contacts.each do |contact| %>
+  <% @contacts.each do |contact| %></br>
       <strong>Name:</strong> <%=link_to contact.name, contact_path(contact) %></br>
       <strong>E-mail:</strong> <%=link_to contact.email %></br>
-      <strong>Phone Number:</strong><%= contact.phone_number %> </br>
-      <strong>Notes:</strong><%= contact.notes %></br>
-      <p>
-      	<i class="icon-tags"> </i>Tags: <%= raw contact.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+      <strong>Phone Number: </strong><%= contact.phone_number %> </br>
+      <strong>Notes: </strong><%= contact.notes %></br>
+      	<i class="icon-tags"> </i>Tags: <%= raw contact.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></br>
     </address>
   <% end %>
 </div>
