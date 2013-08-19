@@ -1,7 +1,8 @@
 Contacttie::Application.routes.draw do
+  get "google/index"
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "welcome#index"
-  #get "/contacts/:importer/callback" => "contacts#callback"
+  get "/contacts/gmail/callback" => "google#index"
   resources :contacts
   get 'tags/:tag', to: 'contacts#index', as: :tag
   resources :tags
