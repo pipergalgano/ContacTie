@@ -220,7 +220,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   require "omniauth-google-oauth2"
-  config.omniauth :google_oauth2, ENV["CONTACT_TIE_GOOGLE_CONTACTS_APP_ID"], ENV["CONTACT_TIE_GOOGLE_CONTACTS_SECRET"], { access_type: "offline", approval_prompt: "", scope: "userinfo.email, https://www.google.com/m8/feeds" }
+  config.omniauth :google_oauth2, ENV["CONTACT_TIE_GOOGLE_CONTACTS_APP_ID"], ENV["CONTACT_TIE_GOOGLE_CONTACTS_SECRET"], { access_type: "offline", approval_prompt: "", scope: "userinfo.email, userinfo.profile, https://www.google.com/m8/feeds" }
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

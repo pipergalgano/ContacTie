@@ -10,15 +10,23 @@ class User < ActiveRecord::Base
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
-    user = User.where(:email => data["email"]).first
+    user = User.where(:email => data["email"],:uid => data["uid"]).first
 
     unless user
         user = User.create(name: data["name"],
-	    		   email: data["email"],
+	    		   email: data["email"], :uid => data["uid"],
 	    		   password: Devise.friendly_token[0,20]
 	    		  )
     end
     user
-end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.google_data"] && session["devise.google_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 
 end

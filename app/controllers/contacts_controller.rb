@@ -1,5 +1,5 @@
 class ContactsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!
   before_action :load_contact, :only => [:edit, :update, :show, :destroy]
   
   def index
